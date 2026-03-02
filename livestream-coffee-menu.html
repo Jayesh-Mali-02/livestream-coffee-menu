@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livestream Coffee — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #5c1a1a;
+    --maroon-dark: #3d0f0f;
+    --cream: #fdf6ee;
+    --gold: #c9a96e;
+    --text: #2a1010;
+    --card-bg: #fff8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html {
+    scroll-padding-top: 60px;
+  }
+
+  body {
+    background: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* 3D grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.4;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--maroon-dark);
+    min-height: 100dvh;
+    min-height: 100vh; /* fallback for older browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(201,169,110,0.03) 80px, rgba(201,169,110,0.03) 81px),
+      repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(201,169,110,0.03) 80px, rgba(201,169,110,0.03) 81px);
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  }
+
+  .logo-wrap {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeDown 1s ease both;
+  }
+
+  .logo-svg {
+    width: 120px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 8px 32px rgba(201,169,110,0.3));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2.8rem, 10vw, 5.5rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    /* reset h1 defaults */
+    margin: 0;
+  }
+
+  .brand-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin-top: 0.3rem;
+  }
+
+  .tagline {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.2em;
+    margin-top: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .scroll-cta {
+    position: relative;
+    z-index: 2;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeDown 1s 0.5s ease both;
+    cursor: pointer;
+  }
+
+  .scroll-cta span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .scroll-arrow {
+    width: 30px; height: 30px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  /* NAV */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--maroon);
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    box-shadow: 0 4px 20px rgba(61,15,15,0.5);
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sticky-nav::-webkit-scrollbar { display: none; }
+
+  .nav-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 30px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .nav-pill:hover, .nav-pill.active {
+    background: var(--gold);
+    color: var(--maroon-dark);
+    border-color: var(--gold);
+  }
+
+  /* MENU SECTIONS */
+  .menu-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .menu-section {
+    margin-bottom: 3.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--maroon);
+    position: relative;
+  }
+
+  .section-icon {
+    width: 44px; height: 44px;
+    background: var(--maroon);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    box-shadow: 4px 4px 0 var(--maroon-dark), 0 8px 20px rgba(92,26,26,0.3);
+    transform: rotate(-3deg);
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--maroon);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .section-title span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.1rem;
+  }
+
+  /* MENU ITEMS */
+  .items-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .menu-item {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(92,26,26,0.08);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+    box-shadow: 0 2px 8px rgba(92,26,26,0.06), 0 1px 0 rgba(255,255,255,0.8) inset;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--maroon);
+    border-radius: 3px 0 0 3px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .menu-item:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 24px rgba(92,26,26,0.14), 0 1px 0 rgba(255,255,255,0.8) inset;
+    border-color: rgba(92,26,26,0.2);
+  }
+
+  .menu-item:hover::before { opacity: 1; }
+
+  .item-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.05rem, 3.5vw, 1.2rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .item-note {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(92,26,26,0.6);
+    font-weight: 500;
+    margin-top: 0.15rem;
+    font-style: italic;
+  }
+
+  .item-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+    font-weight: 800;
+    color: var(--maroon);
+    white-space: nowrap;
+    background: rgba(92,26,26,0.06);
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .new-badge {
+    background: var(--maroon);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 0.1rem 0.45rem;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ADD-ONS */
+  .addons-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .addon-chip {
+    background: var(--maroon);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.35rem 0.9rem;
+    border-radius: 30px;
+    letter-spacing: 0.05em;
+    box-shadow: 2px 2px 0 var(--maroon-dark);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--maroon-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+  }
+
+  .footer .hashtag {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  /* 3D floating cards effect */
+  @media (min-width: 600px) {
+    .items-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Divider */
+  .gold-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+  }
+  .gold-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .gold-divider span {
+    background: var(--cream);
+    padding: 0 1rem;
+    position: relative;
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="logo-wrap">
+    <!-- Livestream Coffee Logo SVG recreation -->
+    <svg class="logo-svg" viewBox="0 0 130 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Play triangle -->
+      <polygon points="0,8 0,38 20,23" fill="#fff"/>
+      <!-- Coffee cup top rim (rectangle) -->
+      <rect x="28" y="8" width="102" height="8" rx="3" fill="#fff"/>
+      <!-- Coffee liquid / bottom half circle -->
+      <path d="M28 16 L130 16 Q130 62 79 62 Q28 62 28 16 Z" fill="#fff"/>
+    </svg>
+    <h1 class="brand-name">LIVESTREAM</h1>
+    <div class="brand-sub">C O F F E E</div>
+    <div class="tagline">All Day Dining · Specialty Coffee</div>
+  </div>
+  <div class="scroll-cta" id="scroll-cta">
+    <span>VIEW MENU</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="menu-start">
+  <button class="nav-pill active" data-target="breakfast">Breakfast</button>
+  <button class="nav-pill" data-target="toasts">Toasts</button>
+  <button class="nav-pill" data-target="appetizers">Appetizers</button>
+  <button class="nav-pill" data-target="sandwiches">Sandwiches</button>
+  <button class="nav-pill" data-target="pasta">Pasta</button>
+  <button class="nav-pill" data-target="bowls">Bowls</button>
+  <button class="nav-pill" data-target="hot-coffee">Hot Coffee</button>
+  <button class="nav-pill" data-target="iced-coffee">Iced Coffee</button>
+  <button class="nav-pill" data-target="frappe">Frappe</button>
+  <button class="nav-pill" data-target="shakes">Shakes</button>
+  <button class="nav-pill" data-target="hot-choc">Hot Choc</button>
+  <button class="nav-pill" data-target="mocktails">Mocktails</button>
+  <button class="nav-pill" data-target="teas">Teas</button>
+</nav>
+
+<!-- MENU -->
+<main class="menu-page">
+
+  <!-- ALL DAY BREAKFAST -->
+  <section class="menu-section" id="breakfast">
+    <div class="section-header">
+      <div class="section-icon">🍳</div>
+      <h2 class="section-title"><span>ALL DAY</span>BREAKFAST</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Breakfast Bagel</div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div><div class="item-name">French Toast (Babka)</div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div><div class="item-name">Burrata &amp; Pesto Croissant</div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div><div class="item-name">Smoothie Bowl</div></div><div class="item-price">₹380</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- TOASTS -->
+  <section class="menu-section" id="toasts">
+    <div class="section-header">
+      <div class="section-icon">🍞</div>
+      <h2 class="section-title"><span>FRESH</span>TOASTS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Mushroom On Toast</div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div><div class="item-name">Guac On Toast</div></div><div class="item-price">₹420</div></div>
+      <div class="menu-item"><div><div class="item-name">Margherita Bagel</div></div><div class="item-price">₹320</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- APPETIZERS -->
+  <section class="menu-section" id="appetizers">
+    <div class="section-header">
+      <div class="section-icon">🧀</div>
+      <h2 class="section-title"><span>SMALL PLATES</span>APPETIZERS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Jalapeños &amp; Cheese Sliders</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Fries</div><div class="item-note">Truffle / Peri Peri</div></div><div class="item-price">₹380 / ₹340</div></div>
+      <div class="menu-item"><div><div class="item-name">Nachos For Sure</div></div><div class="item-price">₹390</div></div>
+      <div class="menu-item"><div><div class="item-name">Quesadilla</div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div><div class="item-name">Risotto Arancini</div></div><div class="item-price">₹420</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- SANDWICHES -->
+  <section class="menu-section" id="sandwiches">
+    <div class="section-header">
+      <div class="section-icon">🥪</div>
+      <h2 class="section-title"><span>HANDCRAFTED</span>SANDWICHES</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Cottage Cheese Katsu</div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div><div class="item-name">Spicy Grilled Cheese</div></div><div class="item-price">₹380</div></div>
+      <div class="menu-item"><div><div class="item-name">Tomato Basil &amp; Cheese</div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div><div class="item-name">Avo Croissant Sandwich</div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div><div class="item-name">Hummus Sandwich</div></div><div class="item-price">₹340</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- PASTA -->
+  <section class="menu-section" id="pasta">
+    <div class="section-header">
+      <div class="section-icon">🍝</div>
+      <h2 class="section-title"><span>ITALIAN</span>PASTA</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Spaghetti Aglio e Olio</div></div><div class="item-price">₹380</div></div>
+      <div class="menu-item"><div><div class="item-name">OG Blush</div></div><div class="item-price">₹390</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- BOWLS -->
+  <section class="menu-section" id="bowls">
+    <div class="section-header">
+      <div class="section-icon">🥗</div>
+      <h2 class="section-title"><span>HEARTY</span>BOWLS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Mexican Rice Bowl</div></div><div class="item-price">₹490</div></div>
+      <div class="menu-item"><div><div class="item-name">Paprika Paneer Bowl</div></div><div class="item-price">₹460</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>☕ DRINKS ☕</span></div>
+
+  <!-- HOT COFFEE -->
+  <section class="menu-section" id="hot-coffee">
+    <div class="section-header">
+      <div class="section-icon">☕</div>
+      <h2 class="section-title"><span>FRESHLY BREWED</span>HOT COFFEE</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Espresso</div></div><div class="item-price">₹150</div></div>
+      <div class="menu-item"><div><div class="item-name">Americano</div></div><div class="item-price">₹190</div></div>
+      <div class="menu-item"><div><div class="item-name">Cortado</div></div><div class="item-price">₹190</div></div>
+      <div class="menu-item"><div><div class="item-name">Cappuccino</div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div><div class="item-name">Latte</div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div><div class="item-name">Flat White</div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div><div class="item-name">Mocha</div></div><div class="item-price">₹240</div></div>
+    </div>
+    <div class="addons-row">
+      <div class="addon-chip">+ Hazelnut ₹40</div>
+      <div class="addon-chip">+ Butterscotch ₹40</div>
+      <div class="addon-chip">+ Coconut Milk ₹40</div>
+      <div class="addon-chip">+ Oat Milk ₹40</div>
+      <div class="addon-chip">+ Almond Milk ₹40</div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- MANUAL BREWS -->
+  <section class="menu-section">
+    <div class="section-header">
+      <div class="section-icon">⚗️</div>
+      <h2 class="section-title"><span>ARTISAN</span>MANUAL BREWS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">V60 Pour Over</div><div class="item-note">Hot / Iced</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">Aeropress</div><div class="item-note">Hot / Iced</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">French Press</div></div><div class="item-price">₹220</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- ICED COFFEE -->
+  <section class="menu-section" id="iced-coffee">
+    <div class="section-header">
+      <div class="section-icon">🧊</div>
+      <h2 class="section-title"><span>CHILLED</span>ICED COFFEE</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Iced Espresso</div></div><div class="item-price">₹160</div></div>
+      <div class="menu-item"><div><div class="item-name">Iced Americano</div></div><div class="item-price">₹190</div></div>
+      <div class="menu-item"><div><div class="item-name">Iced Cortado</div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div><div class="item-name">Iced Cappuccino</div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div><div class="item-name">Iced Latte</div><div class="item-note">Hazelnut / Butterscotch +₹40</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">Vietnamese</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">Mazagran</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">Iced Mocha</div></div><div class="item-price">₹230</div></div>
+      <div class="menu-item"><div><div class="item-name">Classic Cold Coffee</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Espresso Tonic</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Cold Brew</div><div class="item-note">House Blend / Gin Barrel Aged</div></div><div class="item-price">₹220 / ₹270</div></div>
+      <div class="menu-item"><div><div class="item-name">Cold Brew Lemonade</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Cold Brew Tonic</div><div class="item-note">House Blend / Gin Barrel Aged</div></div><div class="item-price">₹240 / ₹290</div></div>
+      <div class="menu-item"><div><div class="item-name">Mazagran Tonic</div></div><div class="item-price">₹260</div></div>
+      <div class="menu-item"><div><div class="item-name">Affogato</div></div><div class="item-price">₹260</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- SIGNATURE COFFEE MOCKTAILS -->
+  <section class="menu-section">
+    <div class="section-header">
+      <div class="section-icon">🍸</div>
+      <h2 class="section-title"><span>HOUSE</span>SIGNATURE MOCKTAILS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Mary Jane</div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div><div class="item-name">Balsamica</div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div><div class="item-name">Cider Cold Brew</div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div><div class="item-name">Almost Baileys <span class="new-badge">NEW</span></div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div><div class="item-name">Iced Mint Mocha</div></div><div class="item-price">₹280</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- FRAPPE -->
+  <section class="menu-section" id="frappe">
+    <div class="section-header">
+      <div class="section-icon">🥤</div>
+      <h2 class="section-title"><span>BLENDED</span>FRAPPE</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Classic</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">Hazelnut</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Caramel</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Mocha</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div><div class="item-name">Irish <span class="new-badge">NEW</span></div></div><div class="item-price">₹300</div></div>
+      <div class="menu-item"><div><div class="item-name">Mocha Brownie <span class="new-badge">NEW</span></div></div><div class="item-price">₹300</div></div>
+      <div class="menu-item"><div><div class="item-name">Biscoff <span class="new-badge">NEW</span></div></div><div class="item-price">₹300</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- SHAKES -->
+  <section class="menu-section" id="shakes">
+    <div class="section-header">
+      <div class="section-icon">🍫</div>
+      <h2 class="section-title"><span>THICK &amp; CREAMY</span>SHAKES</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Nutella <span class="new-badge">NEW</span></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div><div class="item-name">Matcha Black Forest</div></div><div class="item-price">₹230</div></div>
+      <div class="menu-item"><div><div class="item-name">White Chocolate Raspberry</div></div><div class="item-price">₹230</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- HOT CHOCOLATE -->
+  <section class="menu-section" id="hot-choc">
+    <div class="section-header">
+      <div class="section-icon">🍵</div>
+      <h2 class="section-title"><span>INDULGENT</span>HOT CHOCOLATE</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Signature Hot Chocolate</div></div><div class="item-price">₹260</div></div>
+      <div class="menu-item"><div><div class="item-name">French Hot Chocolate</div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div><div class="item-name">Belgian Hot Chocolate</div></div><div class="item-price">₹290</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- MOCKTAILS -->
+  <section class="menu-section" id="mocktails">
+    <div class="section-header">
+      <div class="section-icon">🍹</div>
+      <h2 class="section-title"><span>REFRESHING</span>MOCKTAILS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Iced Tea</div><div class="item-note">Lemon / Peach / Hibiscus</div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div><div class="item-name">Starlight</div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div><div class="item-name">Mint Mojito</div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div><div class="item-name">Raspberry Mandarin <span class="new-badge">NEW</span></div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div><div class="item-name">Pina Colada <span class="new-badge">NEW</span></div></div><div class="item-price">₹360</div></div>
+    </div>
+  </section>
+
+  <div class="gold-divider"><span>✦</span></div>
+
+  <!-- SPECIALTY TEAS -->
+  <section class="menu-section" id="teas">
+    <div class="section-header">
+      <div class="section-icon">🫖</div>
+      <h2 class="section-title"><span>BY BAI MU DAN</span>SPECIALTY TEAS</div>
+    </div>
+    <div class="items-grid">
+      <div class="menu-item"><div><div class="item-name">Sacred Space</div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div><div class="item-name">Ruby Heaven</div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div><div class="item-name">Soul Catcher</div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div><div class="item-name">Lemon Honey Tea</div></div><div class="item-price">₹200</div></div>
+    </div>
+    <div class="addons-row">
+      <div class="addon-chip">+ Coffee Flavours ₹40</div>
+      <div class="addon-chip">+ Coconut Milk ₹40</div>
+      <div class="addon-chip">+ Oat Milk ₹40</div>
+      <div class="addon-chip">+ Almond Milk ₹40</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>ALL DAY DINING · SPECIALTY COFFEE</div>
+  <span class="hashtag">#yourneighbourhoodcoffeeshop</span>
+</footer>
+
+<script>
+  // HERO SCROLL CTA
+  const scrollCta = document.getElementById('scroll-cta');
+  if (scrollCta) {
+    scrollCta.addEventListener('click', function() {
+      const menuStart = document.getElementById('menu-start');
+      if (menuStart) menuStart.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // NAV SCROLL — clean event delegation, no inline onclick
+  const nav = document.querySelector('.sticky-nav');
+  const allPills = document.querySelectorAll('.nav-pill');
+
+  nav.addEventListener('click', function(e) {
+    const pill = e.target.closest('.nav-pill');
+    if (!pill) return;
+    const id = pill.dataset.target;
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (el) {
+      const navH = nav.offsetHeight;
+      const top = el.getBoundingClientRect().top + window.scrollY - navH - 12;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    allPills.forEach(b => b.classList.remove('active'));
+    pill.classList.add('active');
+  });
+
+  // SCROLL SPY — active nav highlight on scroll
+  const sections = document.querySelectorAll('.menu-section[id]');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        allPills.forEach(p => {
+          p.classList.toggle('active', p.dataset.target === id);
+        });
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '-10% 0px -80% 0px' });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  // ITEM STAGGER ANIMATION on scroll
+  const items = document.querySelectorAll('.menu-item');
+  const itemIndexMap = new Map();
+  items.forEach((item, idx) => itemIndexMap.set(item, idx));
+
+  const itemObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const idx = itemIndexMap.get(entry.target) % 10;
+        entry.target.style.animationDelay = idx * 0.04 + 's';
+        entry.target.style.animation = 'fadeUp 0.4s ease both';
+        itemObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  items.forEach(item => itemObserver.observe(item));
+</script>
+
+</body>
+</html>
