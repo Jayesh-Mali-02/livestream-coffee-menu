@@ -4,9 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Livestream Coffee — Menu</title>
+<meta name="description" content="Livestream Coffee, Vesu Surat — All day dining & specialty coffee. Sandwiches, pasta, cold brew, frappes, mocktails and more.">
+<meta property="og:title" content="Livestream Coffee — Menu">
+<meta property="og:description" content="All day dining & specialty coffee in Vesu, Surat. View our full menu.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Livestream Coffee">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Livestream Coffee — Menu">
+<meta name="twitter:description" content="All day dining & specialty coffee in Vesu, Surat.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Livestream Coffee",
+  "description": "All day dining and specialty coffee in Vesu, Surat.",
+  "servesCuisine": ["Coffee", "Sandwiches", "Pasta", "Breakfast"],
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Vesu",
+    "addressRegion": "Surat",
+    "addressCountry": "IN"
+  },
+  "hasMenu": {
+    "@type": "Menu",
+    "name": "Livestream Coffee Menu",
+    "hasMenuSection": [
+      { "@type": "MenuSection", "name": "Breakfast" },
+      { "@type": "MenuSection", "name": "Toasts" },
+      { "@type": "MenuSection", "name": "Sandwiches" },
+      { "@type": "MenuSection", "name": "Hot Coffee" },
+      { "@type": "MenuSection", "name": "Iced Coffee" },
+      { "@type": "MenuSection", "name": "Mocktails" },
+      { "@type": "MenuSection", "name": "Specialty Teas" }
+    ]
+  },
+  "hashtag": "#yourneighbourhoodcoffeeshop"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --maroon: #5c1a1a;
@@ -15,429 +53,248 @@
     --gold: #c9a96e;
     --text: #2a1010;
     --card-bg: #fff8f0;
+    --nav-height: 52px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-  html {
-    scroll-padding-top: 60px;
-  }
-
-  body {
-    background: var(--cream);
-    font-family: 'Barlow', sans-serif;
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* 3D grain overlay */
+  html { scroll-padding-top: var(--nav-height); }
+  body { background: var(--cream); font-family: 'Barlow', sans-serif; color: var(--text); overflow-x: hidden; }
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
+    content: ''; position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 50;
-    opacity: 0.4;
+    pointer-events: none; z-index: 50; opacity: 0.4;
   }
-
-  /* HERO */
   .hero {
-    background: var(--maroon-dark);
-    min-height: 100dvh;
-    min-height: 100vh; /* fallback for older browsers */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 2rem;
+    background: var(--maroon-dark); min-height: 100dvh; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding: 2rem;
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
+    content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
     background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    animation: pulse 4s ease-in-out infinite;
+    top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse 4s ease-in-out infinite;
   }
-
   .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-      repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(201,169,110,0.03) 80px, rgba(201,169,110,0.03) 81px),
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(201,169,110,0.03) 80px, rgba(201,169,110,0.03) 81px),
       repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(201,169,110,0.03) 80px, rgba(201,169,110,0.03) 81px);
   }
-
-  @keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-  }
-
-  .logo-wrap {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    animation: fadeDown 1s ease both;
-  }
-
-  .logo-svg {
-    width: 120px;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 8px 32px rgba(201,169,110,0.3));
-    animation: float 3s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .brand-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(2.8rem, 10vw, 5.5rem);
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    /* reset h1 defaults */
-    margin: 0;
-  }
-
-  .brand-sub {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(1rem, 4vw, 1.5rem);
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 0.4em;
-    margin-top: 0.3rem;
-  }
-
-  .tagline {
-    font-family: 'Barlow', sans-serif;
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.2em;
-    margin-top: 1.2rem;
-    text-transform: uppercase;
-  }
-
-  .scroll-cta {
-    position: relative;
-    z-index: 2;
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    animation: fadeDown 1s 0.5s ease both;
-    cursor: pointer;
-  }
-
-  .scroll-cta span {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    font-weight: 600;
-  }
-
-  .scroll-arrow {
-    width: 30px; height: 30px;
-    border-right: 2px solid var(--gold);
-    border-bottom: 2px solid var(--gold);
-    transform: rotate(45deg);
-    animation: bounce 1.5s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: rotate(45deg) translateY(0); }
-    50% { transform: rotate(45deg) translateY(6px); }
-  }
+  @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:1} }
+  .logo-wrap { position:relative;z-index:2;text-align:center;animation:fadeDown 1s ease both; }
+  .logo-svg { width:180px;margin-bottom:1.2rem;filter:drop-shadow(0 8px 32px rgba(201,169,110,0.35));animation:float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-30px)} to{opacity:1;transform:translateY(0)} }
+  .brand-name { font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.8rem,10vw,5.5rem);font-weight:800;color:#fff;letter-spacing:.05em;line-height:1;text-shadow:0 4px 20px rgba(0,0,0,.5);margin:0; }
+  .brand-sub { font-family:'Barlow Condensed',sans-serif;font-size:clamp(1rem,4vw,1.5rem);font-weight:600;color:var(--gold);letter-spacing:.4em;margin-top:.3rem; }
+  .tagline { font-family:'Barlow',sans-serif;font-size:clamp(.85rem,2.5vw,1rem);color:rgba(255,255,255,.5);letter-spacing:.2em;margin-top:1.2rem;text-transform:uppercase; }
+  .scroll-cta { position:relative;z-index:2;margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:fadeDown 1s .5s ease both;cursor:pointer; }
+  .scroll-cta span { font-family:'Barlow Condensed',sans-serif;font-size:.9rem;letter-spacing:.25em;color:var(--gold);font-weight:600; }
+  .scroll-arrow { width:30px;height:30px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(45deg);animation:bounce 1.5s ease-in-out infinite; }
+  @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
 
   /* NAV */
   .sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--maroon);
-    padding: 0.75rem 1rem;
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    box-shadow: 0 4px 20px rgba(61,15,15,0.5);
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
+    position:sticky;top:0;z-index:100;background:var(--maroon);
+    padding:.75rem 1rem;display:flex;gap:.5rem;overflow-x:auto;overflow-y:hidden;
+    scrollbar-width:none;box-shadow:0 4px 20px rgba(61,15,15,.5);flex-wrap:nowrap;-webkit-overflow-scrolling:touch;
   }
-
-  .sticky-nav::-webkit-scrollbar { display: none; }
-
+  .sticky-nav::-webkit-scrollbar{display:none}
   .nav-pill {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-    background: none;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 30px;
-    padding: 0.4rem 1rem;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s;
+    font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:rgba(255,255,255,.75);background:none;
+    border:1px solid rgba(255,255,255,.15);border-radius:30px;
+    padding:.55rem .85rem .55rem .6rem;cursor:pointer;white-space:nowrap;
+    transition:all .2s;display:flex;align-items:center;gap:.32rem;
   }
+  .nav-pill svg { width:13px;height:13px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+  .nav-pill:hover,.nav-pill.active { background:var(--gold);color:var(--maroon-dark);border-color:var(--gold); }
 
-  .nav-pill:hover, .nav-pill.active {
-    background: var(--gold);
-    color: var(--maroon-dark);
-    border-color: var(--gold);
-  }
-
-  /* MENU SECTIONS */
-  .menu-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem 4rem;
-  }
-
-  .menu-section {
-    margin-bottom: 3.5rem;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 2px solid var(--maroon);
-    position: relative;
-  }
-
+  /* SECTIONS */
+  .menu-page { max-width:900px;margin:0 auto;padding:2rem 1rem 4rem; }
+  .menu-section { margin-bottom:3.5rem;animation:fadeUp .6s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .section-header { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:2px solid var(--maroon); }
   .section-icon {
-    width: 44px; height: 44px;
-    background: var(--maroon);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-    box-shadow: 4px 4px 0 var(--maroon-dark), 0 8px 20px rgba(92,26,26,0.3);
-    transform: rotate(-3deg);
+    width:48px;height:48px;background:var(--maroon);border-radius:12px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    box-shadow:4px 4px 0 var(--maroon-dark),0 8px 20px rgba(92,26,26,.3);transform:rotate(-3deg);
   }
+  .section-icon svg { width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round; }
+  .section-title { font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;color:var(--maroon);letter-spacing:.05em;text-transform:uppercase;margin:0; }
+  .section-title span { display:block;font-size:.75rem;font-weight:600;color:var(--gold);letter-spacing:.3em;margin-bottom:.1rem; }
 
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
-    font-weight: 800;
-    color: var(--maroon);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  .section-title span {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 0.3em;
-    margin-bottom: 0.1rem;
-  }
-
-  /* MENU ITEMS */
-  .items-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-  }
-
+  /* ITEMS */
+  .items-grid { display:grid;grid-template-columns:1fr;gap:.7rem; }
   .menu-item {
-    background: var(--card-bg);
-    border-radius: 14px;
-    padding: 1rem 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    border: 1px solid rgba(92,26,26,0.08);
-    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: default;
-    box-shadow: 0 2px 8px rgba(92,26,26,0.06), 0 1px 0 rgba(255,255,255,0.8) inset;
-    position: relative;
-    overflow: hidden;
+    background:var(--card-bg);border-radius:14px;padding:1rem 1.2rem;
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    border:1px solid rgba(92,26,26,.08);transition:all .25s cubic-bezier(.34,1.56,.64,1);
+    cursor:default;box-shadow:0 2px 8px rgba(92,26,26,.06),0 1px 0 rgba(255,255,255,.8) inset;
+    position:relative;overflow:hidden;
   }
-
-  .menu-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--maroon);
-    border-radius: 3px 0 0 3px;
-    opacity: 0;
-    transition: opacity 0.2s;
+  .menu-item::before { content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--maroon);border-radius:3px 0 0 3px;opacity:0;transition:opacity .2s; }
+  .menu-item:hover { transform:translateY(-2px) scale(1.01);box-shadow:0 8px 24px rgba(92,26,26,.14),0 1px 0 rgba(255,255,255,.8) inset;border-color:rgba(92,26,26,.2); }
+  .menu-item:hover::before { opacity:1; }
+  .item-left { display:flex;align-items:center;gap:.75rem;min-width:0; }
+  .item-icon {
+    width:36px;height:36px;background:rgba(92,26,26,.07);border-radius:9px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;
   }
+  .menu-item:hover .item-icon { background:rgba(92,26,26,.13); }
+  .item-icon svg { width:18px;height:18px;stroke:var(--maroon);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:.75; }
+  .item-name { font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.05rem,3.5vw,1.2rem);font-weight:700;color:var(--text);letter-spacing:.02em;line-height:1.2; }
+  .item-note { font-family:'Barlow',sans-serif;font-size:.78rem;color:rgba(92,26,26,.6);font-weight:500;margin-top:.15rem;font-style:italic; }
+  .item-price { font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:800;color:var(--maroon);white-space:nowrap;background:rgba(92,26,26,.06);padding:.3rem .8rem;border-radius:8px;letter-spacing:.02em; }
+  .new-badge { background:var(--maroon);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.1em;padding:.1rem .45rem;border-radius:20px;vertical-align:middle;margin-left:.4rem;position:relative;top:-1px; }
 
-  .menu-item:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 8px 24px rgba(92,26,26,0.14), 0 1px 0 rgba(255,255,255,0.8) inset;
-    border-color: rgba(92,26,26,0.2);
-  }
-
-  .menu-item:hover::before { opacity: 1; }
-
-  .item-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(1.05rem, 3.5vw, 1.2rem);
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
-
-  .item-note {
-    font-family: 'Barlow', sans-serif;
-    font-size: 0.78rem;
-    color: rgba(92,26,26,0.6);
-    font-weight: 500;
-    margin-top: 0.15rem;
-    font-style: italic;
-  }
-
-  .item-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-    font-weight: 800;
-    color: var(--maroon);
-    white-space: nowrap;
-    background: rgba(92,26,26,0.06);
-    padding: 0.3rem 0.8rem;
-    border-radius: 8px;
-    letter-spacing: 0.02em;
-  }
-
-  .new-badge {
-    background: var(--maroon);
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    padding: 0.1rem 0.45rem;
-    border-radius: 20px;
-    vertical-align: middle;
-    margin-left: 0.4rem;
-    position: relative;
-    top: -1px;
-  }
-
-  /* ADD-ONS */
-  .addons-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .addon-chip {
-    background: var(--maroon);
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    padding: 0.35rem 0.9rem;
-    border-radius: 30px;
-    letter-spacing: 0.05em;
-    box-shadow: 2px 2px 0 var(--maroon-dark);
-  }
+  /* ADDONS */
+  .addons-row { display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem; }
+  .addon-chip { background:var(--maroon);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;padding:.35rem .9rem;border-radius:30px;letter-spacing:.05em;box-shadow:2px 2px 0 var(--maroon-dark);display:flex;align-items:center;gap:.3rem; }
+  .addon-chip svg { width:11px;height:11px;stroke:var(--gold);fill:none;stroke-width:2.5;stroke-linecap:round;flex-shrink:0; }
 
   /* FOOTER */
-  .footer {
-    background: var(--maroon-dark);
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    padding: 2.5rem 1rem;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+  .footer { background:var(--maroon-dark);color:rgba(255,255,255,.7);text-align:center;padding:2.5rem 1rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.2em; }
+  .footer .hashtag { color:var(--gold);font-size:1.2rem;margin-top:.5rem;display:block; }
+
+  @media(min-width:600px){.items-grid{grid-template-columns:1fr 1fr}}
+
+  @media (prefers-reduced-motion: reduce) {
+    body::before { display: none; }
+    .logo-svg, .hero::before { animation: none; }
+    .scroll-arrow { animation: none; }
+    .menu-item { transition: none; }
   }
 
-  .footer .hashtag {
-    color: var(--gold);
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    display: block;
-  }
+  .gold-divider { text-align:center;margin:2rem 0;position:relative; }
+  .gold-divider::before { content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+  .gold-divider span { background:var(--cream);padding:0 1rem;position:relative;color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.2em;font-size:.8rem; }
 
-  /* 3D floating cards effect */
-  @media (min-width: 600px) {
-    .items-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .skip-link {
+    position:absolute;top:-100px;left:1rem;
+    background:var(--gold);color:var(--maroon-dark);
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;
+    font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:.5rem 1.2rem;border-radius:0 0 8px 8px;
+    text-decoration:none;z-index:999;transition:top .2s;
   }
-
-  /* Divider */
-  .gold-divider {
-    text-align: center;
-    margin: 2rem 0;
-    position: relative;
-  }
-  .gold-divider::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .gold-divider span {
-    background: var(--cream);
-    padding: 0 1rem;
-    position: relative;
-    color: var(--gold);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    font-size: 0.8rem;
-  }
+  .skip-link:focus { top:0; }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#menu-start">Skip to Menu</a>
+
+<!-- REUSABLE SVG ICONS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-breakfast" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <ellipse cx="12" cy="15" rx="8" ry="5.5"/>
+    <circle cx="12" cy="14.5" r="2.2"/>
+    <path d="M9.5 8.5 Q10.5 5 12 5 Q13.5 5 14.5 8.5"/>
+  </symbol>
+  <symbol id="i-toast" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <rect x="4" y="7" width="16" height="12" rx="2.5"/>
+    <path d="M4 11 Q12 8 20 11"/>
+    <line x1="8" y1="15" x2="10" y2="15"/>
+    <line x1="13" y1="15" x2="15" y2="15"/>
+  </symbol>
+  <symbol id="i-apps" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M3 15 L12 5 L21 15 Z"/>
+    <rect x="3" y="15" width="18" height="5" rx="1.5"/>
+    <circle cx="9" cy="12" r="1.2"/>
+    <circle cx="15" cy="13" r="0.8"/>
+  </symbol>
+  <symbol id="i-sandwich" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <rect x="3" y="5" width="18" height="3" rx="1.5"/>
+    <rect x="3" y="16" width="18" height="3" rx="1.5"/>
+    <path d="M5 8 Q9 11 12 9.5 Q15 8 19 11 L19 16 L5 16 Z"/>
+  </symbol>
+  <symbol id="i-pasta" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M4 12 Q4 5 12 5 Q20 5 20 12"/>
+    <line x1="4" y1="12" x2="20" y2="12"/>
+    <path d="M9 12 Q9.5 16 11 21"/>
+    <path d="M12 12 L12 21"/>
+    <path d="M15 12 Q14.5 16 13 21"/>
+    <line x1="9" y1="21" x2="15" y2="21"/>
+  </symbol>
+  <symbol id="i-bowl" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M4 10 Q4 19 12 19 Q20 19 20 10 Z"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+    <path d="M8 7.5 Q9 5.5 10 7.5"/>
+    <path d="M13 6.5 Q14 4.5 15 6.5"/>
+  </symbol>
+  <symbol id="i-hotcoffee" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M6 9 L7 20 L17 20 L18 9 Z"/>
+    <line x1="5" y1="9" x2="19" y2="9"/>
+    <path d="M18 12 Q21 12 21 15 Q21 18 18 18"/>
+    <path d="M9 5.5 Q9 3.5 11 3.5 Q11 5.5 13 5.5 Q13 3.5 15 3.5"/>
+  </symbol>
+  <symbol id="i-icedcoffee" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M8 7 L7 20 L17 20 L16 7 Z"/>
+    <line x1="7" y1="7" x2="17" y2="7"/>
+    <line x1="9.5" y1="7" x2="9.5" y2="20"/>
+    <line x1="14.5" y1="7" x2="14.5" y2="20"/>
+    <line x1="7" y1="12.5" x2="17" y2="12.5"/>
+    <line x1="7" y1="16.5" x2="17" y2="16.5"/>
+    <path d="M10 7 Q11 4.5 12 3.5 Q13 4.5 14 7"/>
+  </symbol>
+  <symbol id="i-frappe" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M8 3 L16 3 L15 9 L17 9 L16 21 L8 21 L7 9 L9 9 Z"/>
+    <line x1="7" y1="9" x2="17" y2="9"/>
+    <path d="M9.5 14 Q12 12 14.5 14"/>
+    <path d="M9.5 17.5 Q12 15.5 14.5 17.5"/>
+    <line x1="8" y1="3" x2="16" y2="3"/>
+  </symbol>
+  <symbol id="i-shake" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M8 8 L7 20 L17 20 L16 8 Z"/>
+    <ellipse cx="12" cy="8" rx="4.5" ry="2"/>
+    <path d="M9.5 5.5 Q12 3 14.5 5.5"/>
+    <line x1="12" y1="3" x2="12" y2="2"/>
+    <path d="M9.5 14 Q12 12.5 14.5 14"/>
+  </symbol>
+  <symbol id="i-hotchoc" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <rect x="5" y="9" width="12" height="10" rx="2"/>
+    <line x1="5" y1="9" x2="17" y2="9"/>
+    <path d="M17 12 Q20.5 12 20.5 14.5 Q20.5 17 17 17"/>
+    <line x1="5" y1="13.5" x2="17" y2="13.5"/>
+    <path d="M8 5 Q8 3 10 3.5 Q10 5.5 12 4.5 Q12 2.5 14 3.5"/>
+  </symbol>
+  <symbol id="i-mocktail" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M5 3 L12 13 L19 3 Z"/>
+    <line x1="12" y1="13" x2="12" y2="20"/>
+    <line x1="9" y1="20" x2="15" y2="20"/>
+    <line x1="7" y1="7" x2="11" y2="10"/>
+    <circle cx="16" cy="6" r="1.2" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-tea" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M6 8 L6 17 Q6 20 12 20 Q18 20 18 17 L18 8 Z"/>
+    <line x1="5" y1="8" x2="19" y2="8"/>
+    <path d="M18 11 Q21.5 11 21.5 13.5 Q21.5 16 18 15.5"/>
+    <path d="M9 5 Q10 3 12 3 Q14 3 15 5"/>
+    <line x1="12" y1="3" x2="12" y2="8"/>
+  </symbol>
+  <symbol id="i-brew" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M9 3 L9 10 L4 19 Q4 21 12 21 Q20 21 20 19 L15 10 L15 3"/>
+    <line x1="8" y1="3" x2="16" y2="3"/>
+    <path d="M6 16.5 Q9 14.5 12 16 Q15 17.5 18 15.5"/>
+  </symbol>
+  <symbol id="i-sig" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+    <path d="M7 3 Q7 13 12 14.5 Q17 13 17 3 Z"/>
+    <line x1="12" y1="14.5" x2="12" y2="20"/>
+    <line x1="9" y1="20" x2="15" y2="20"/>
+    <path d="M8.5 8 Q10 9.5 12 8.5"/>
+  </symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="2.5">
+    <line x1="12" y1="5" x2="12" y2="19"/>
+    <line x1="5" y1="12" x2="19" y2="12"/>
+  </symbol>
+</svg>
 
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="logo-wrap">
-    <!-- Livestream Coffee Logo SVG recreation -->
-    <svg class="logo-svg" viewBox="0 0 130 75" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Play triangle -->
-      <polygon points="0,8 0,38 20,23" fill="#fff"/>
-      <!-- Coffee cup top rim (rectangle) -->
-      <rect x="28" y="8" width="102" height="8" rx="3" fill="#fff"/>
-      <!-- Coffee liquid / bottom half circle -->
-      <path d="M28 16 L130 16 Q130 62 79 62 Q28 62 28 16 Z" fill="#fff"/>
+    <svg class="logo-svg" viewBox="0 0 277 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cup body — white on dark hero -->
+      <path d="M0 0 C18.36684381 -0.02332804 36.7336838 -0.04097871 55.10053921 -0.05181217 C63.62798494 -0.05697533 72.15542149 -0.06401841 80.68286133 -0.07543945 C88.11266255 -0.08538568 95.54245713 -0.09185328 102.97226483 -0.09408849 C106.9087332 -0.09539571 110.84518253 -0.09848221 114.78164482 -0.10573006 C118.48253327 -0.11248931 122.18339475 -0.11461716 125.88428879 -0.11310768 C127.89870802 -0.11351638 129.91312427 -0.11891207 131.92753601 -0.12442017 C133.1153064 -0.1230455 134.30307678 -0.12167084 135.52684021 -0.12025452 C136.5657009 -0.12117631 137.6045616 -0.1220981 138.67490292 -0.12304783 C141 0 141 0 142 1 C142.97771508 16.07500228 138.88642174 27.43289963 133 41 C132.34 41 131.68 41 131 41 C130.74992188 41.71671875 130.49984375 42.4334375 130.2421875 43.171875 C123.3049483 58.96609255 107.17958774 67.14523091 92.05615234 73.23388672 C89.08330364 74.34155702 86.06738379 75.19672653 83 76 C82.32839844 76.20238281 81.65679687 76.40476562 80.96484375 76.61328125 C65.17249377 79.72151713 47.62026949 75.3031989 33.9921875 67.21484375 C17.77640745 55.96543508 7.75215685 41.77254289 2 23 C1.65179199 21.95118652 1.30358398 20.90237305 0.94482422 19.82177734 C-0.10257323 15.58509525 -0.22801312 11.89301297 -0.125 7.5625 C-0.11597656 6.83095703 -0.10695313 6.09941406 -0.09765625 5.34570312 C-0.07436153 3.56365702 -0.0385019 1.78178241 0 0 Z" fill="#ffffff" transform="translate(95,28)"/>
+      <!-- Play arrow — white -->
+      <path d="M0 0 C2.475 0.495 2.475 0.495 5 1 C5 1.66 5 2.32 5 3 C6.3303125 3.433125 6.3303125 3.433125 7.6875 3.875 C10.50382424 4.83148748 13.25083156 5.86798946 16 7 C16 7.66 16 8.32 16 9 C16.845625 9.268125 17.69125 9.53625 18.5625 9.8125 C22.13854067 11.0478595 25.53860908 12.476988 29 14 C29 14.66 29 15.32 29 16 C29.62648438 16.20496094 30.25296875 16.40992187 30.8984375 16.62109375 C31.71570313 16.89050781 32.53296875 17.15992187 33.375 17.4375 C34.18710938 17.70433594 34.99921875 17.97117187 35.8359375 18.24609375 C38 19 38 19 40 20 C40 20.66 40 21.32 40 22 C42.475 22.99 42.475 22.99 45 24 C42.72402354 26.49552403 40.39278822 28.06622986 37.4375 29.6875 C36.65246094 30.12449219 35.86742187 30.56148437 35.05859375 31.01171875 C33 32 33 32 31 32 C31 32.66 31 33.32 31 34 C29.824375 34.4125 28.64875 34.825 27.4375 35.25 C24.49292912 36.34310002 21.82776196 37.58860293 19.125 39.1875 C16 41 16 41 14 41 C14 41.66 14 42.32 14 43 C13.36191406 43.18175781 12.72382812 43.36351562 12.06640625 43.55078125 C10.82697266 43.92783203 10.82697266 43.92783203 9.5625 44.3125 C8.73878906 44.55613281 7.91507813 44.79976562 7.06640625 45.05078125 C6.38449219 45.36402344 5.70257813 45.67726562 5 46 C4.67 46.99 4.34 47.98 4 49 C2.68 49 1.36 49 0 49 C0 32.83 0 16.66 0 0 Z" fill="#ffffff" transform="translate(39,29)"/>
     </svg>
     <h1 class="brand-name">LIVESTREAM</h1>
     <div class="brand-sub">C O F F E E</div>
@@ -450,360 +307,329 @@
 </section>
 
 <!-- STICKY NAV -->
-<nav class="sticky-nav" id="menu-start">
-  <button class="nav-pill active" data-target="breakfast">Breakfast</button>
-  <button class="nav-pill" data-target="toasts">Toasts</button>
-  <button class="nav-pill" data-target="appetizers">Appetizers</button>
-  <button class="nav-pill" data-target="sandwiches">Sandwiches</button>
-  <button class="nav-pill" data-target="pasta">Pasta</button>
-  <button class="nav-pill" data-target="bowls">Bowls</button>
-  <button class="nav-pill" data-target="hot-coffee">Hot Coffee</button>
-  <button class="nav-pill" data-target="iced-coffee">Iced Coffee</button>
-  <button class="nav-pill" data-target="frappe">Frappe</button>
-  <button class="nav-pill" data-target="shakes">Shakes</button>
-  <button class="nav-pill" data-target="hot-choc">Hot Choc</button>
-  <button class="nav-pill" data-target="mocktails">Mocktails</button>
-  <button class="nav-pill" data-target="teas">Teas</button>
+<nav class="sticky-nav" id="menu-start" aria-label="Menu categories">
+  <button class="nav-pill active" data-target="breakfast"><svg><use href="#i-breakfast"/></svg>Breakfast</button>
+  <button class="nav-pill" data-target="toasts"><svg><use href="#i-toast"/></svg>Toasts</button>
+  <button class="nav-pill" data-target="appetizers"><svg><use href="#i-apps"/></svg>Appetizers</button>
+  <button class="nav-pill" data-target="sandwiches"><svg><use href="#i-sandwich"/></svg>Sandwiches</button>
+  <button class="nav-pill" data-target="pasta"><svg><use href="#i-pasta"/></svg>Pasta</button>
+  <button class="nav-pill" data-target="bowls"><svg><use href="#i-bowl"/></svg>Bowls</button>
+  <button class="nav-pill" data-target="hot-coffee"><svg><use href="#i-hotcoffee"/></svg>Hot Coffee</button>
+  <button class="nav-pill" data-target="iced-coffee"><svg><use href="#i-icedcoffee"/></svg>Iced Coffee</button>
+  <button class="nav-pill" data-target="frappe"><svg><use href="#i-frappe"/></svg>Frappe</button>
+  <button class="nav-pill" data-target="shakes"><svg><use href="#i-shake"/></svg>Shakes</button>
+  <button class="nav-pill" data-target="hot-choc"><svg><use href="#i-hotchoc"/></svg>Hot Choc</button>
+  <button class="nav-pill" data-target="mocktails"><svg><use href="#i-mocktail"/></svg>Mocktails</button>
+  <button class="nav-pill" data-target="teas"><svg><use href="#i-tea"/></svg>Teas</button>
 </nav>
 
 <!-- MENU -->
 <main class="menu-page">
 
-  <!-- ALL DAY BREAKFAST -->
+  <!-- BREAKFAST -->
   <section class="menu-section" id="breakfast">
     <div class="section-header">
-      <div class="section-icon">🍳</div>
-      <h2 class="section-title"><span>ALL DAY</span>BREAKFAST</div>
+      <div class="section-icon"><svg><use href="#i-breakfast"/></svg></div>
+      <h2 class="section-title"><span>ALL DAY</span>BREAKFAST</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Breakfast Bagel</div></div><div class="item-price">₹280</div></div>
-      <div class="menu-item"><div><div class="item-name">French Toast (Babka)</div></div><div class="item-price">₹320</div></div>
-      <div class="menu-item"><div><div class="item-name">Burrata &amp; Pesto Croissant</div></div><div class="item-price">₹360</div></div>
-      <div class="menu-item"><div><div class="item-name">Smoothie Bowl</div></div><div class="item-price">₹380</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-breakfast"/></svg></div><div><div class="item-name">Breakfast Bagel</div></div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-toast"/></svg></div><div><div class="item-name">French Toast (Babka)</div></div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sandwich"/></svg></div><div><div class="item-name">Burrata &amp; Pesto Croissant</div></div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-bowl"/></svg></div><div><div class="item-name">Smoothie Bowl</div></div></div><div class="item-price">₹380</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- TOASTS -->
   <section class="menu-section" id="toasts">
     <div class="section-header">
-      <div class="section-icon">🍞</div>
-      <h2 class="section-title"><span>FRESH</span>TOASTS</div>
+      <div class="section-icon"><svg><use href="#i-toast"/></svg></div>
+      <h2 class="section-title"><span>FRESH</span>TOASTS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Mushroom On Toast</div></div><div class="item-price">₹360</div></div>
-      <div class="menu-item"><div><div class="item-name">Guac On Toast</div></div><div class="item-price">₹420</div></div>
-      <div class="menu-item"><div><div class="item-name">Margherita Bagel</div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-toast"/></svg></div><div><div class="item-name">Mushroom On Toast</div></div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-toast"/></svg></div><div><div class="item-name">Guac On Toast</div></div></div><div class="item-price">₹420</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-toast"/></svg></div><div><div class="item-name">Margherita Bagel</div></div></div><div class="item-price">₹320</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- APPETIZERS -->
   <section class="menu-section" id="appetizers">
     <div class="section-header">
-      <div class="section-icon">🧀</div>
-      <h2 class="section-title"><span>SMALL PLATES</span>APPETIZERS</div>
+      <div class="section-icon"><svg><use href="#i-apps"/></svg></div>
+      <h2 class="section-title"><span>SMALL PLATES</span>APPETIZERS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Jalapeños &amp; Cheese Sliders</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Fries</div><div class="item-note">Truffle / Peri Peri</div></div><div class="item-price">₹380 / ₹340</div></div>
-      <div class="menu-item"><div><div class="item-name">Nachos For Sure</div></div><div class="item-price">₹390</div></div>
-      <div class="menu-item"><div><div class="item-name">Quesadilla</div></div><div class="item-price">₹320</div></div>
-      <div class="menu-item"><div><div class="item-name">Risotto Arancini</div></div><div class="item-price">₹420</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-apps"/></svg></div><div><div class="item-name">Jalapeños &amp; Cheese Sliders</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-apps"/></svg></div><div><div class="item-name">Fries</div><div class="item-note">Truffle / Peri Peri</div></div></div><div class="item-price">₹380 / ₹340</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-apps"/></svg></div><div><div class="item-name">Nachos For Sure</div></div></div><div class="item-price">₹390</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-apps"/></svg></div><div><div class="item-name">Quesadilla</div></div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-apps"/></svg></div><div><div class="item-name">Risotto Arancini</div></div></div><div class="item-price">₹420</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- SANDWICHES -->
   <section class="menu-section" id="sandwiches">
     <div class="section-header">
-      <div class="section-icon">🥪</div>
-      <h2 class="section-title"><span>HANDCRAFTED</span>SANDWICHES</div>
+      <div class="section-icon"><svg><use href="#i-sandwich"/></svg></div>
+      <h2 class="section-title"><span>HANDCRAFTED</span>SANDWICHES</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Cottage Cheese Katsu</div></div><div class="item-price">₹360</div></div>
-      <div class="menu-item"><div><div class="item-name">Spicy Grilled Cheese</div></div><div class="item-price">₹380</div></div>
-      <div class="menu-item"><div><div class="item-name">Tomato Basil &amp; Cheese</div></div><div class="item-price">₹320</div></div>
-      <div class="menu-item"><div><div class="item-name">Avo Croissant Sandwich</div></div><div class="item-price">₹340</div></div>
-      <div class="menu-item"><div><div class="item-name">Hummus Sandwich</div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sandwich"/></svg></div><div><div class="item-name">Cottage Cheese Katsu</div></div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sandwich"/></svg></div><div><div class="item-name">Spicy Grilled Cheese</div></div></div><div class="item-price">₹380</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sandwich"/></svg></div><div><div class="item-name">Tomato Basil &amp; Cheese</div></div></div><div class="item-price">₹320</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sandwich"/></svg></div><div><div class="item-name">Avo Croissant Sandwich</div></div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sandwich"/></svg></div><div><div class="item-name">Hummus Sandwich</div></div></div><div class="item-price">₹340</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- PASTA -->
   <section class="menu-section" id="pasta">
     <div class="section-header">
-      <div class="section-icon">🍝</div>
-      <h2 class="section-title"><span>ITALIAN</span>PASTA</div>
+      <div class="section-icon"><svg><use href="#i-pasta"/></svg></div>
+      <h2 class="section-title"><span>ITALIAN</span>PASTA</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Spaghetti Aglio e Olio</div></div><div class="item-price">₹380</div></div>
-      <div class="menu-item"><div><div class="item-name">OG Blush</div></div><div class="item-price">₹390</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-pasta"/></svg></div><div><div class="item-name">Spaghetti Aglio e Olio</div></div></div><div class="item-price">₹380</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-pasta"/></svg></div><div><div class="item-name">OG Blush</div></div></div><div class="item-price">₹390</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- BOWLS -->
   <section class="menu-section" id="bowls">
     <div class="section-header">
-      <div class="section-icon">🥗</div>
-      <h2 class="section-title"><span>HEARTY</span>BOWLS</div>
+      <div class="section-icon"><svg><use href="#i-bowl"/></svg></div>
+      <h2 class="section-title"><span>HEARTY</span>BOWLS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Mexican Rice Bowl</div></div><div class="item-price">₹490</div></div>
-      <div class="menu-item"><div><div class="item-name">Paprika Paneer Bowl</div></div><div class="item-price">₹460</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-bowl"/></svg></div><div><div class="item-name">Mexican Rice Bowl</div></div></div><div class="item-price">₹490</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-bowl"/></svg></div><div><div class="item-name">Paprika Paneer Bowl</div></div></div><div class="item-price">₹460</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>☕ DRINKS ☕</span></div>
 
   <!-- HOT COFFEE -->
   <section class="menu-section" id="hot-coffee">
     <div class="section-header">
-      <div class="section-icon">☕</div>
-      <h2 class="section-title"><span>FRESHLY BREWED</span>HOT COFFEE</div>
+      <div class="section-icon"><svg><use href="#i-hotcoffee"/></svg></div>
+      <h2 class="section-title"><span>FRESHLY BREWED</span>HOT COFFEE</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Espresso</div></div><div class="item-price">₹150</div></div>
-      <div class="menu-item"><div><div class="item-name">Americano</div></div><div class="item-price">₹190</div></div>
-      <div class="menu-item"><div><div class="item-name">Cortado</div></div><div class="item-price">₹190</div></div>
-      <div class="menu-item"><div><div class="item-name">Cappuccino</div></div><div class="item-price">₹210</div></div>
-      <div class="menu-item"><div><div class="item-name">Latte</div></div><div class="item-price">₹210</div></div>
-      <div class="menu-item"><div><div class="item-name">Flat White</div></div><div class="item-price">₹210</div></div>
-      <div class="menu-item"><div><div class="item-name">Mocha</div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Espresso</div></div></div><div class="item-price">₹150</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Americano</div></div></div><div class="item-price">₹190</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Cortado</div></div></div><div class="item-price">₹190</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Cappuccino</div></div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Latte</div></div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Flat White</div></div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotcoffee"/></svg></div><div><div class="item-name">Mocha</div></div></div><div class="item-price">₹240</div></div>
     </div>
     <div class="addons-row">
-      <div class="addon-chip">+ Hazelnut ₹40</div>
-      <div class="addon-chip">+ Butterscotch ₹40</div>
-      <div class="addon-chip">+ Coconut Milk ₹40</div>
-      <div class="addon-chip">+ Oat Milk ₹40</div>
-      <div class="addon-chip">+ Almond Milk ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Hazelnut ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Butterscotch ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Coconut Milk ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Oat Milk ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Almond Milk ₹40</div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- MANUAL BREWS -->
   <section class="menu-section">
     <div class="section-header">
-      <div class="section-icon">⚗️</div>
-      <h2 class="section-title"><span>ARTISAN</span>MANUAL BREWS</div>
+      <div class="section-icon"><svg><use href="#i-brew"/></svg></div>
+      <h2 class="section-title"><span>ARTISAN</span>MANUAL BREWS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">V60 Pour Over</div><div class="item-note">Hot / Iced</div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">Aeropress</div><div class="item-note">Hot / Iced</div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">French Press</div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-brew"/></svg></div><div><div class="item-name">V60 Pour Over</div><div class="item-note">Hot / Iced</div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-brew"/></svg></div><div><div class="item-name">Aeropress</div><div class="item-note">Hot / Iced</div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-brew"/></svg></div><div><div class="item-name">French Press</div></div></div><div class="item-price">₹220</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- ICED COFFEE -->
   <section class="menu-section" id="iced-coffee">
     <div class="section-header">
-      <div class="section-icon">🧊</div>
-      <h2 class="section-title"><span>CHILLED</span>ICED COFFEE</div>
+      <div class="section-icon"><svg><use href="#i-icedcoffee"/></svg></div>
+      <h2 class="section-title"><span>CHILLED</span>ICED COFFEE</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Iced Espresso</div></div><div class="item-price">₹160</div></div>
-      <div class="menu-item"><div><div class="item-name">Iced Americano</div></div><div class="item-price">₹190</div></div>
-      <div class="menu-item"><div><div class="item-name">Iced Cortado</div></div><div class="item-price">₹200</div></div>
-      <div class="menu-item"><div><div class="item-name">Iced Cappuccino</div></div><div class="item-price">₹210</div></div>
-      <div class="menu-item"><div><div class="item-name">Iced Latte</div><div class="item-note">Hazelnut / Butterscotch +₹40</div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">Vietnamese</div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">Mazagran</div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">Iced Mocha</div></div><div class="item-price">₹230</div></div>
-      <div class="menu-item"><div><div class="item-name">Classic Cold Coffee</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Espresso Tonic</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Cold Brew</div><div class="item-note">House Blend / Gin Barrel Aged</div></div><div class="item-price">₹220 / ₹270</div></div>
-      <div class="menu-item"><div><div class="item-name">Cold Brew Lemonade</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Cold Brew Tonic</div><div class="item-note">House Blend / Gin Barrel Aged</div></div><div class="item-price">₹240 / ₹290</div></div>
-      <div class="menu-item"><div><div class="item-name">Mazagran Tonic</div></div><div class="item-price">₹260</div></div>
-      <div class="menu-item"><div><div class="item-name">Affogato</div></div><div class="item-price">₹260</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Iced Espresso</div></div></div><div class="item-price">₹160</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Iced Americano</div></div></div><div class="item-price">₹190</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Iced Cortado</div></div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Iced Cappuccino</div></div></div><div class="item-price">₹210</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Iced Latte</div><div class="item-note">Hazelnut / Butterscotch +₹40</div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Vietnamese</div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Mazagran</div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Iced Mocha</div></div></div><div class="item-price">₹230</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Classic Cold Coffee</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Espresso Tonic</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Cold Brew</div><div class="item-note">House Blend / Gin Barrel Aged</div></div></div><div class="item-price">₹220 / ₹270</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Cold Brew Lemonade</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Cold Brew Tonic</div><div class="item-note">House Blend / Gin Barrel Aged</div></div></div><div class="item-price">₹240 / ₹290</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Mazagran Tonic</div></div></div><div class="item-price">₹260</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-icedcoffee"/></svg></div><div><div class="item-name">Affogato</div></div></div><div class="item-price">₹260</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
-  <!-- SIGNATURE COFFEE MOCKTAILS -->
+  <!-- SIGNATURE -->
   <section class="menu-section">
     <div class="section-header">
-      <div class="section-icon">🍸</div>
-      <h2 class="section-title"><span>HOUSE</span>SIGNATURE MOCKTAILS</div>
+      <div class="section-icon"><svg><use href="#i-sig"/></svg></div>
+      <h2 class="section-title"><span>HOUSE</span>SIGNATURE MOCKTAILS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Mary Jane</div></div><div class="item-price">₹270</div></div>
-      <div class="menu-item"><div><div class="item-name">Balsamica</div></div><div class="item-price">₹270</div></div>
-      <div class="menu-item"><div><div class="item-name">Cider Cold Brew</div></div><div class="item-price">₹270</div></div>
-      <div class="menu-item"><div><div class="item-name">Almost Baileys <span class="new-badge">NEW</span></div></div><div class="item-price">₹280</div></div>
-      <div class="menu-item"><div><div class="item-name">Iced Mint Mocha</div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sig"/></svg></div><div><div class="item-name">Mary Jane</div></div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sig"/></svg></div><div><div class="item-name">Balsamica</div></div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sig"/></svg></div><div><div class="item-name">Cider Cold Brew</div></div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sig"/></svg></div><div><div class="item-name">Almost Baileys <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-sig"/></svg></div><div><div class="item-name">Iced Mint Mocha</div></div></div><div class="item-price">₹280</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- FRAPPE -->
   <section class="menu-section" id="frappe">
     <div class="section-header">
-      <div class="section-icon">🥤</div>
-      <h2 class="section-title"><span>BLENDED</span>FRAPPE</div>
+      <div class="section-icon"><svg><use href="#i-frappe"/></svg></div>
+      <h2 class="section-title"><span>BLENDED</span>FRAPPE</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Classic</div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">Hazelnut</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Caramel</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Mocha</div></div><div class="item-price">₹240</div></div>
-      <div class="menu-item"><div><div class="item-name">Irish <span class="new-badge">NEW</span></div></div><div class="item-price">₹300</div></div>
-      <div class="menu-item"><div><div class="item-name">Mocha Brownie <span class="new-badge">NEW</span></div></div><div class="item-price">₹300</div></div>
-      <div class="menu-item"><div><div class="item-name">Biscoff <span class="new-badge">NEW</span></div></div><div class="item-price">₹300</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Classic</div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Hazelnut</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Caramel</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Mocha</div></div></div><div class="item-price">₹240</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Irish <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹300</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Mocha Brownie <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹300</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-frappe"/></svg></div><div><div class="item-name">Biscoff <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹300</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- SHAKES -->
   <section class="menu-section" id="shakes">
     <div class="section-header">
-      <div class="section-icon">🍫</div>
-      <h2 class="section-title"><span>THICK &amp; CREAMY</span>SHAKES</div>
+      <div class="section-icon"><svg><use href="#i-shake"/></svg></div>
+      <h2 class="section-title"><span>THICK &amp; CREAMY</span>SHAKES</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Nutella <span class="new-badge">NEW</span></div></div><div class="item-price">₹220</div></div>
-      <div class="menu-item"><div><div class="item-name">Matcha Black Forest</div></div><div class="item-price">₹230</div></div>
-      <div class="menu-item"><div><div class="item-name">White Chocolate Raspberry</div></div><div class="item-price">₹230</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-shake"/></svg></div><div><div class="item-name">Nutella <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹220</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-shake"/></svg></div><div><div class="item-name">Matcha Black Forest</div></div></div><div class="item-price">₹230</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-shake"/></svg></div><div><div class="item-name">White Chocolate Raspberry</div></div></div><div class="item-price">₹230</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
-  <!-- HOT CHOCOLATE -->
+  <!-- HOT CHOC -->
   <section class="menu-section" id="hot-choc">
     <div class="section-header">
-      <div class="section-icon">🍵</div>
-      <h2 class="section-title"><span>INDULGENT</span>HOT CHOCOLATE</div>
+      <div class="section-icon"><svg><use href="#i-hotchoc"/></svg></div>
+      <h2 class="section-title"><span>INDULGENT</span>HOT CHOCOLATE</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Signature Hot Chocolate</div></div><div class="item-price">₹260</div></div>
-      <div class="menu-item"><div><div class="item-name">French Hot Chocolate</div></div><div class="item-price">₹270</div></div>
-      <div class="menu-item"><div><div class="item-name">Belgian Hot Chocolate</div></div><div class="item-price">₹290</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotchoc"/></svg></div><div><div class="item-name">Signature Hot Chocolate</div></div></div><div class="item-price">₹260</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotchoc"/></svg></div><div><div class="item-name">French Hot Chocolate</div></div></div><div class="item-price">₹270</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-hotchoc"/></svg></div><div><div class="item-name">Belgian Hot Chocolate</div></div></div><div class="item-price">₹290</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
   <!-- MOCKTAILS -->
   <section class="menu-section" id="mocktails">
     <div class="section-header">
-      <div class="section-icon">🍹</div>
-      <h2 class="section-title"><span>REFRESHING</span>MOCKTAILS</div>
+      <div class="section-icon"><svg><use href="#i-mocktail"/></svg></div>
+      <h2 class="section-title"><span>REFRESHING</span>MOCKTAILS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Iced Tea</div><div class="item-note">Lemon / Peach / Hibiscus</div></div><div class="item-price">₹280</div></div>
-      <div class="menu-item"><div><div class="item-name">Starlight</div></div><div class="item-price">₹280</div></div>
-      <div class="menu-item"><div><div class="item-name">Mint Mojito</div></div><div class="item-price">₹340</div></div>
-      <div class="menu-item"><div><div class="item-name">Raspberry Mandarin <span class="new-badge">NEW</span></div></div><div class="item-price">₹340</div></div>
-      <div class="menu-item"><div><div class="item-name">Pina Colada <span class="new-badge">NEW</span></div></div><div class="item-price">₹360</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-mocktail"/></svg></div><div><div class="item-name">Iced Tea</div><div class="item-note">Lemon / Peach / Hibiscus</div></div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-mocktail"/></svg></div><div><div class="item-name">Starlight</div></div></div><div class="item-price">₹280</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-mocktail"/></svg></div><div><div class="item-name">Mint Mojito</div></div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-mocktail"/></svg></div><div><div class="item-name">Raspberry Mandarin <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹340</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-mocktail"/></svg></div><div><div class="item-name">Pina Colada <span class="new-badge">NEW</span></div></div></div><div class="item-price">₹360</div></div>
     </div>
   </section>
-
   <div class="gold-divider"><span>✦</span></div>
 
-  <!-- SPECIALTY TEAS -->
+  <!-- TEAS -->
   <section class="menu-section" id="teas">
     <div class="section-header">
-      <div class="section-icon">🫖</div>
-      <h2 class="section-title"><span>BY BAI MU DAN</span>SPECIALTY TEAS</div>
+      <div class="section-icon"><svg><use href="#i-tea"/></svg></div>
+      <h2 class="section-title"><span>BY BAI MU DAN</span>SPECIALTY TEAS</h2>
     </div>
     <div class="items-grid">
-      <div class="menu-item"><div><div class="item-name">Sacred Space</div></div><div class="item-price">₹200</div></div>
-      <div class="menu-item"><div><div class="item-name">Ruby Heaven</div></div><div class="item-price">₹200</div></div>
-      <div class="menu-item"><div><div class="item-name">Soul Catcher</div></div><div class="item-price">₹200</div></div>
-      <div class="menu-item"><div><div class="item-name">Lemon Honey Tea</div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-tea"/></svg></div><div><div class="item-name">Sacred Space</div></div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-tea"/></svg></div><div><div class="item-name">Ruby Heaven</div></div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-tea"/></svg></div><div><div class="item-name">Soul Catcher</div></div></div><div class="item-price">₹200</div></div>
+      <div class="menu-item"><div class="item-left"><div class="item-icon"><svg><use href="#i-tea"/></svg></div><div><div class="item-name">Lemon Honey Tea</div></div></div><div class="item-price">₹200</div></div>
     </div>
     <div class="addons-row">
-      <div class="addon-chip">+ Coffee Flavours ₹40</div>
-      <div class="addon-chip">+ Coconut Milk ₹40</div>
-      <div class="addon-chip">+ Oat Milk ₹40</div>
-      <div class="addon-chip">+ Almond Milk ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Coffee Flavours ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Coconut Milk ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Oat Milk ₹40</div>
+      <div class="addon-chip"><svg><use href="#i-plus"/></svg>Almond Milk ₹40</div>
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div>ALL DAY DINING · SPECIALTY COFFEE</div>
   <span class="hashtag">#yourneighbourhoodcoffeeshop</span>
 </footer>
 
 <script>
-  // HERO SCROLL CTA
-  const scrollCta = document.getElementById('scroll-cta');
-  if (scrollCta) {
-    scrollCta.addEventListener('click', function() {
-      const menuStart = document.getElementById('menu-start');
-      if (menuStart) menuStart.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+  document.getElementById('scroll-cta').addEventListener('click', () => {
+    document.getElementById('menu-start').scrollIntoView({ behavior: 'smooth' });
+  });
 
-  // NAV SCROLL — clean event delegation, no inline onclick
   const nav = document.querySelector('.sticky-nav');
   const allPills = document.querySelectorAll('.nav-pill');
 
-  nav.addEventListener('click', function(e) {
+  nav.addEventListener('click', e => {
     const pill = e.target.closest('.nav-pill');
     if (!pill) return;
-    const id = pill.dataset.target;
-    if (!id) return;
-    const el = document.getElementById(id);
+    const el = document.getElementById(pill.dataset.target);
     if (el) {
-      const navH = nav.offsetHeight;
-      const top = el.getBoundingClientRect().top + window.scrollY - navH - 12;
-      window.scrollTo({ top, behavior: 'smooth' });
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 12, behavior: 'smooth' });
     }
     allPills.forEach(b => b.classList.remove('active'));
     pill.classList.add('active');
   });
 
-  // SCROLL SPY — active nav highlight on scroll
-  const sections = document.querySelectorAll('.menu-section[id]');
-
-  const sectionObserver = new IntersectionObserver((entries) => {
+  const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const id = entry.target.id;
-        allPills.forEach(p => {
-          p.classList.toggle('active', p.dataset.target === id);
-        });
+        allPills.forEach(p => p.classList.toggle('active', p.dataset.target === entry.target.id));
       }
     });
   }, { threshold: 0.1, rootMargin: '-10% 0px -80% 0px' });
+  document.querySelectorAll('.menu-section[id]').forEach(s => sectionObserver.observe(s));
 
-  sections.forEach(s => sectionObserver.observe(s));
-
-  // ITEM STAGGER ANIMATION on scroll
   const items = document.querySelectorAll('.menu-item');
-  const itemIndexMap = new Map();
-  items.forEach((item, idx) => itemIndexMap.set(item, idx));
-
-  const itemObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  const idxMap = new Map();
+  items.forEach((item, i) => idxMap.set(item, i));
+  const itemObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const idx = itemIndexMap.get(entry.target) % 10;
-        entry.target.style.animationDelay = idx * 0.04 + 's';
+        entry.target.style.animationDelay = (idxMap.get(entry.target) % 10) * 0.04 + 's';
         entry.target.style.animation = 'fadeUp 0.4s ease both';
         itemObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-
   items.forEach(item => itemObserver.observe(item));
-</script>
 
+  // Cleanup on page hide to prevent memory leaks
+  window.addEventListener('pagehide', () => {
+    sectionObserver.disconnect();
+    itemObserver.disconnect();
+  });
+</script>
 </body>
 </html>
